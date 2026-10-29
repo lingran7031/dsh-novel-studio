@@ -1,0 +1,83 @@
+{
+  "name": "dsh-novel-studio",
+  "version": "0.2.0",
+  "private": true,
+  "description": "DSH 小说工作室：四角色协作创作，支持半成品导入、剧情改写、原稿对照与版本回退。",
+  "author": "lingran7031",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lingran7031/dsh-novel-studio.git"
+  },
+  "homepage": "https://github.com/lingran7031/dsh-novel-studio#readme",
+  "bugs": {
+    "url": "https://github.com/lingran7031/dsh-novel-studio/issues"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "bundle",
+    "novel",
+    "writing",
+    "agent",
+    "multi-agent"
+  ],
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/host.js && node --check lib/mode.js && node --check lib/client.js && node --check lib/tools.js && node --check lib/core.js",
+    "test": "node test/smoke.mjs && node test/acceptance.mjs"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./host": "./lib/host.js",
+    "./mode": "./lib/mode.js",
+    "./skills": "./lib/skills.js",
+    "./commands": "./lib/commands.js",
+    "./tools": "./lib/tools.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/host.js",
+    "lib/mode.js",
+    "lib/skills.js",
+    "lib/commands.js",
+    "lib/tools.js",
+    "lib/client.js",
+    "lib/core.js",
+    "lib/docx.js",
+    "lib/workbench.js",
+    "lib/revisions.js",
+    "lib/rewrite-runtime.js",
+    "lib/rewrite-tools.js",
+    "lib/workflow-http.js",
+    "skills",
+    "locale/*.json",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "docs",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar-right",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

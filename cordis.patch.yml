@@ -1,0 +1,96 @@
+# dsh-novel-studio bundle patch
+# 1) 包根 Host 行：Client 半（右栏写作台）通过 dsh.client 由 clientModules 组合，
+#    该行只负责让包进入 Loader 树；apply 为空。
+# 2) Host 行：自检/写作台数据 HTTP 路由（回环信任围栏），不注册全局工具。
+# 3) preset 行：声明「小说工作室」写作模式；子插件全部挂在该模式作用域内，
+#    因此 novel_* 工具、协作提示词与技能只对该模式的 Agent 可见。
+
+- insert:
+    - id: novel-studio-ui
+      name: 'dsh-novel-studio'
+      config: {}
+
+    - id: novel-studio-host
+      name: 'dsh-novel-studio/host'
+      config: {}
+
+    - id: preset-novel-studio
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: novel-studio
+        name: 小说工作室
+        description: 四角色协作写小说，支持半成品导入、剧情改写、原稿对照与版本回退。
+        order: 10
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: >-
+                你是「小说工作室」写作模式中的一名专业小说创作成员。这是一个由架构师、作者、编辑、裁定者组成的创作团队；
+                你的具体身份由运行时团队上下文（Lead 或某位队友）与对应角色技能决定。
+                Lead 是总编，负责调度、验收与向用户汇报；队友各自负责本职环节并写出可交接的产物。
+                你的目标是写出逻辑自洽、人物鲜活、文风统一的连载小说，并让所有设定与决策都可追溯、可续写。
+                默认使用简体中文工作与创作，除非用户明确要求其他语言。
+                所有故事资料、计划、正文与决策都要落盘到小说项目目录，不要只停留在对话里。
+
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+            config:
+              sampleOverCapGlobResults: false
+
+          - id: tool-ask-user
+            name: '@deepseek-ai/dsh-tool-ask-user'
+
+          - id: tool-todo
+            name: '@deepseek-ai/dsh-tool-todo'
+            config:
+              allowParallelInProgress: true
+
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+
+          - id: novel-skills
+            name: 'dsh-novel-studio/skills'
+
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+
+          - id: compaction
+            name: cordis:group
+            group: true
+            isolate:
+              compaction: true
+              toolResultPruner: true
+            config:
+              - id: compaction-basic
+                name: '@deepseek-ai/dsh-compaction-basic'
+              - id: command-compact
+                name: '@deepseek-ai/dsh-command-compact'
+              - id: tool-result-pruner
+                name: '@deepseek-ai/dsh-compaction-tool-result-pruner'
+                config:
+                  thresholdChars: 8192
+                  headChars: 4096
+                  tailChars: 1024
+
+          - id: present
+            name: '@deepseek-ai/dsh-tool-present'
+
+          - id: tool-subagent
+            name: '@deepseek-ai/dsh-tool-subagent'
+            config:
+              provider: spawn
+              toolName: subagent
+              maxDepth: 1
+
+          - id: novel-mode
+            name: 'dsh-novel-studio/mode'
+
+          - id: novel-tools
+            name: 'dsh-novel-studio/tools'
+
+          - id: novel-commands
+            name: 'dsh-novel-studio/commands'

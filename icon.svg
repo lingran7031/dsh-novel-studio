@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Novel Studio">
+  <defs>
+    <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4d6bfe"/>
+      <stop offset="1" stop-color="#7b4dff"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#0f1320"/>
+  <path d="M16 18c6-3 12-3 16 0 4-3 10-3 16 0v30c-6-3-12-3-16 0-4-3-10-3-16 0V18z" fill="none" stroke="url(#cover)" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M32 18v30" stroke="url(#cover)" stroke-width="2.2" opacity="0.75"/>
+  <path d="M22 27h7M22 33h7M35 27h7M35 33h7M22 39h7M35 39h7" stroke="#9fb3ff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+  <path d="M46 10l6 6-16 16-7 1 1-7 16-16z" fill="#ffd479" stroke="#0f1320" stroke-width="1.4" stroke-linejoin="round"/>
+</svg>

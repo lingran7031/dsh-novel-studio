@@ -1,0 +1,50 @@
+[
+  {
+    "character_a": "陈砚",
+    "character_b": "林岚",
+    "relation": "搭档 / 互相信任；第 7 章她右手受伤仍先出井、接管两页签到表与物证袋",
+    "chapter": 7
+  },
+  {
+    "character_a": "陈砚",
+    "character_b": "陈棠",
+    "relation": "姐弟 / 已确认她仍在港区活动、未照面（第 7 章结论级）",
+    "chapter": 7
+  },
+  {
+    "character_a": "陈砚",
+    "character_b": "陈渡",
+    "relation": "父子 / 更早失踪；第 7 章握有他签名的 1998 停用通告",
+    "chapter": 7
+  },
+  {
+    "character_a": "陈砚",
+    "character_b": "周野",
+    "relation": "同业外援 / 共经第 6 章被困与第 7 章脱出，周野右肩受伤",
+    "chapter": 7
+  },
+  {
+    "character_a": "老魏",
+    "character_b": "陈棠",
+    "relation": "搭手掩护：第 7 章承认「她让我搭了一把手」替她开井盖，此前第 2、6 章已有往来",
+    "chapter": 7
+  },
+  {
+    "character_a": "秦九",
+    "character_b": "陈砚",
+    "relation": "已撕破脸：第 6 章困人拉闸，第 7 章撤离，双方转入正面敌意",
+    "chapter": 7
+  },
+  {
+    "character_a": "许蔓",
+    "character_b": "陈砚",
+    "relation": "潜在盟友 / 尚未照面（第 7 章经林岚转述，许蔓持 2015-07-14 空页的签到表复印件）",
+    "chapter": 7
+  },
+  {
+    "character_a": "韩东",
+    "character_b": "陈渡",
+    "relation": "旧港利益链上下游",
+    "chapter": 5
+  }
+]

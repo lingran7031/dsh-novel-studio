@@ -1,0 +1,18 @@
+# dependencies / build artifacts
+node_modules/
+dist/
+coverage/
+
+# local / generated
+*.log
+*.bak
+.env
+.env.*
+tmp/
+.tmp/
+.DS_Store
+Thumbs.db
+
+# novel studio runtime caches (regenerable)
+samples/**/story/context/
+samples/**/story/versions/.write-lock.json
